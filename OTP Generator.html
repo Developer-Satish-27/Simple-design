@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Generator</title>
+    <script>
+        let  generateOTP = () =>{
+            const otplength = 4 ;
+            const otp =Math.floor(100000 + Math.random() * 900000);
+            document.getElementById("otpDisplay").innerText =`${otp}`;
+
+        };
+        
+    </script>
+</head>
+
+<body>
+    <style>
+        div{
+            padding: 34.5%;
+        }
+        #otpDisplay{
+            border: 2px solid gray;
+            color: white;
+            background-color: rgb(70, 67, 67);
+            padding: 15px;
+            
+        }
+        button{
+            height: 40px;
+            color:white;
+            background-color:cornflowerblue;
+        }
+        body{
+            background-color:black ;
+        }
+    </style><div>
+    <div  id="otpDisplay"></div>
+    <br><br>
+    <button onclick="generateOTP()"> OTP GENERATOR</button>
+</div>
+</body>
+</html>

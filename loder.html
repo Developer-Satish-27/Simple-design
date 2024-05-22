@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conic gradient</title>
+</head>
+<body>
+<style>
+    
+    .Conic{
+        border: 15px solid rgb(176, 202, 232);
+        border-top:15px dotted blue;
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+        animation: satish 0.5s  infinite  cubic-bezier(0.4,-0.02, 0.2, 1) ;
+        position: relative;    
+        top: 350px;
+        left: 550px;
+    
+       
+      
+    }
+    @keyframes satish {
+        from{transform: rotate(0deg) ;
+           
+           
+        }
+        to{ transform: rotate(360deg)   ;
+            
+        }
+    }
+</style>
+
+    <div class="Conic"></div>
+</body>
+</html>

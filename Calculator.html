@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+</head>
+<script>
+    function Add(){
+        var a=parseInt(document.getElementById("First").value)
+        var b=parseInt(document.getElementById("Second").value)
+        
+        document.getElementById("Result1").innerText=a+b
+        
+    } 
+    function Sub(){
+        var a=parseInt(document.getElementById("First").value)
+        var b=parseInt(document.getElementById("Second").value)
+        
+
+        document.getElementById("Result2").innerText=a-b
+    } 
+    function Multiply(){
+        var a=parseInt(document.getElementById("First").value)
+        var b=parseInt(document.getElementById("Second").value)
+        
+        
+        document.getElementById("Result3").innerText=a*b
+    } 
+    function Devide(){
+        var a=parseInt(document.getElementById("First").value)
+        var b=parseInt(document.getElementById("Second").value)
+        
+
+        document.getElementById("Result4").innerText=  (a/b)
+    } 
+
+</script>
+<body>
+    <style>
+        .input{
+            background-color: darkgray;
+            color: black;
+        }
+        .oprator{
+            background-color: chocolate;
+            color: black;height: 30px;
+            width: 83px;
+        }
+    </style>
+    <input type="number" id="First" class="input">
+    <input type="number" id="Second" class="input"> <br><br>
+    <input type="button" value="Add" onclick=Add() class="oprator">
+    <input type="button" value="Sub" onclick=Sub() class="oprator">
+    <input type="button" value="Multiply" onclick=Multiply() class="oprator">
+    <input type="button" value="Devide" onclick=Devide() class="oprator"><br>
+    <div id="Result1"></div>
+    <div class="Result2"></div>
+    <div class="Result3"></div>
+    <div class="Result4"></div>
+</body>
+</html>
