@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <input type="text" value=""  id="fact"> <br><br>
+  <input type="button" value="Click Here" onclick=factorial()>
+  
+  
+  <script >
+  function factorial (){
+    a=parseFloat(document.getElementById("fact").value);
+    
+    for(i=a;i>1;){
+      
+      i--
+   a*=i; }
+    document.write(a);}
+  </script>
+</body>
+
+</html>
