@@ -1,18 +1,97 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>replit</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(black, chocolate, black);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .message {
+      font-size: 2em;
+      font-weight: bold;
+      margin: 20px;
+      text-align: center;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .balloons {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .balloon {
+      width: 50px;
+      height: 70px;
+      background: radial-gradient( white,red);
+      border-radius: 50%;
+      position: relative;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .balloon:after {
+      content: '';
+      width: 2px;
+      height: 20px;
+      background: white;
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-30px); }
+    }
+  </style>
 </head>
-
 <body>
-  
+  <div id="app"></div>
 
-  
-  <script src="script.js"></script>
+  <script>
+    function createBirthdayMessage(name, date) {
+      const app = document.getElementById("app");
+
+      // Birthday message
+      const message = document.createElement("div");
+      message.className = "message";
+      message.innerHTML = `
+        🎉 Happy Birthday, <span style="color: cyan;font-style:italic; text-decoration: underline;">${name}</span>! 🎉<br>
+        Date: ${date}<br>
+        Wishing you all the best on your special day! 🎂🎁
+      `;
+      app.appendChild(message);
+
+      // Balloons
+      const balloons = document.createElement("div");
+      balloons.className = "balloons";
+      for (let i = 0; i < 7; i++) {
+        const balloon = document.createElement("div");
+        balloon.className = "balloon";
+        balloons.appendChild(balloon);
+      }
+      app.appendChild(balloons);
+    }
+
+    // Call the function
+    createBirthdayMessage("Khushi Saini", "18 November");
+  </script>
 </body>
-
 </html>
