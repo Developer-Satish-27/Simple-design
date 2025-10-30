@@ -3,60 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>calculator</title>
+    <title>resume</title>
 </head>
 <script>
-    function Add(){
-        var a=parseInt(document.getElementById("First").value)
-        var b=parseInt(document.getElementById("Second").value)
-        
-        document.getElementById("Result1").innerText=a+b
-        
-    } 
-    function Sub(){
-        var a=parseInt(document.getElementById("First").value)
-        var b=parseInt(document.getElementById("Second").value)
-        
+    import fs from "fs";
+import {
+  Document,
+  Packer,
+  Paragraph,
+  TextRun,
+  Table,
+  TableRow,
+  TableCell,
+  AlignmentType,
+  WidthType
+} from "docx";
 
-        document.getElementById("Result2").innerText=a-b
-    } 
-    function Multiply(){
-        var a=parseInt(document.getElementById("First").value)
-        var b=parseInt(document.getElementById("Second").value)
-        
-        
-        document.getElementById("Result3").innerText=a*b
-    } 
-    function Devide(){
-        var a=parseInt(document.getElementById("First").value)
-        var b=parseInt(document.getElementById("Second").value)
-        
+// Create the document
+const doc = new Document({
+  sections: [
+    {
+      properties: {},
+      children: [
+        // Name Header
+        new Paragraph({
+          alignment: AlignmentType.CENTER,
+          children: [
+            new TextRun({
+              text: "SURENDRA KUMAR SAINI",
+              bold: true,
+              size: 36, // 18pt
+            }),
+          ],
+        }),
 
-        document.getElementById("Result4").innerText=  (a/b)
-    } 
+        // Contact Info
+        new Paragraph({
+          alignment: AlignmentType.CENTER,
+          children: [
+            new TextRun({
+              text:
+                "📞 9950771367   |   ✉️ surendrasaini995077@gmail.com   |   📍 Saini Colony, College Road, Kaladera, Chomu – 303801",
+              size: 20,
+            }),
+          ],
+        }),
+
+        new Paragraph(""),
+
+        // Objective
+        new Paragraph({
+          children: [new TextRun({ text: "OBJECTIVE", bold: true, size: 26 })],
+        }),
+        new Paragraph({
+          text:
+            "To obtain a challenging and rewarding position that utilizes my academic background in arts and education, along with my technical skills, to contribute effectively to an organization’s goals and facilitate personal and professional growth.",
+          spacing: { after: 200 },
+        }),
+
+        // Skills Summary
+        new Paragraph({
+          children: [new TextRun({ text: "SKILLS SUMMARY", bold: true, size: 26 })],
+        }),
+        new Paragraph({
+          text:
+            "• Proficient in Microsoft Word, Excel, and Tally (GST and accounting)\n" +
+            "• Strong typing and data entry skills\n" +
+            "• Knowledge of office software and digital documentation\n" +
+            "• Ability to manage data with accuracy and efficiency\n" +
+            "• Basic understanding of computer operations and troubleshooting",
+        }),
+
+        // Education
+        new Paragraph({
+          children: [new TextRun({ text: "EDUCATION", bold: true, size: 26 })],
+        }),
+
+        new Table({
+          width: { size: 100, type: WidthType.PERCENTAGE },
+          rows: [
+            new TableRow({
+              children: [
+                new TableCell({ children: [new Paragraph("Degree / Course")] }),
+                new TableCell({ children: [new Paragraph("Institution / Board")] }),
+                new TableCell({ children: [new Paragraph("Year of Completion")] }),
+              ],
+            }),
+            ...[
+              ["M.A. (Economics)", "Rajasthan University Campus, Jaipur", "Appearing"],
+              ["B.A. B.Ed. (Integrated Course)", "Shekhawati University, Sikar", "2023"],
+              ["12th", "BSER, Ajmer", "2019"],
+              ["10th", "BSER, Ajmer", "2017"],
+            ].map(
+              ([degree, institution, year]) =>
+                new TableRow({
+                  children: [
+                    new TableCell({ children: [new Paragraph(degree)] }),
+                    new TableCell({ children: [new Paragraph(institution)] }),
+                    new TableCell({ children: [new Paragraph(year)] }),
+                  ],
+                })
+            ),
+          ],
+        }),
+
+        // Computer Skills
+        new Paragraph({
+          children: [new TextRun({ text: "COMPUTER SKILLS", bold: true, size: 26 })],
+        }),
+        new Paragraph({
+          text: "• RS-CIT (Microsoft Word, Excel)\n• TALLY (Accounting Software and GST)",
+        }),
+
+        // Personal Details
+        new Paragraph({
+          children: [new TextRun({ text: "PERSONAL DETAILS", bold: true, size: 26 })],
+        }),
+        new Paragraph({
+          text:
+            "Father’s Name: Shrawan Lal Saini\n" +
+            "Date of Birth: 26-08-2002\n" +
+            "Marital Status: Unmarried",
+        }),
+
+        // Declaration
+        new Paragraph({
+          children: [new TextRun({ text: "DECLARATION", bold: true, size: 26 })],
+        }),
+        new Paragraph({
+          text:
+            "I hereby declare that all the above-furnished information is true and correct to the best of my knowledge and belief.",
+        }),
+        new Paragraph({
+          alignment: AlignmentType.RIGHT,
+          children: [new TextRun({ text: "(SURENDRA KUMAR SAINI)", bold: true })],
+        }),
+      ],
+    },
+  ],
+});
+
+// Save the document
+Packer.toBuffer(doc).then((buffer) => {
+  fs.writeFileSync("Surendra_Kumar_Saini_Resume.docx", buffer);
+  console.log("✅ Resume created: Surendra_Kumar_Saini_Resume.docx");
+});
 
 </script>
-<body>
-    <style>
-        .input{
-            background-color: darkgray;
-            color: black;
-        }
-        .oprator{
-            background-color: chocolate;
-            color: black;height: 30px;
-            width: 83px;
-        }
-    </style>
-    <input type="number" id="First" class="input">
-    <input type="number" id="Second" class="input"> <br><br>
-    <input type="button" value="Add" onclick=Add() class="oprator">
-    <input type="button" value="Sub" onclick=Sub() class="oprator">
-    <input type="button" value="Multiply" onclick=Multiply() class="oprator">
-    <input type="button" value="Devide" onclick=Devide() class="oprator"><br>
-    <div id="Result1"></div>
-    <div class="Result2"></div>
-    <div class="Result3"></div>
-    <div class="Result4"></div>
-</body>
 </html>
